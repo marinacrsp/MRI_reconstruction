@@ -1,4 +1,4 @@
-# MRI_reconstruction
+# NIFs for MRI Reconstruction
 
 This is a repository for the code implemented as part of my research project at CVL, ETH Zürich 👩‍💻; Investigating Neural Implicit Fields for MRI reconstruction.
 
