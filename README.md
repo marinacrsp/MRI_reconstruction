@@ -30,7 +30,7 @@ Folders relevant 🖇️: `multi_vol_hash`, `multi_vol_coil`, `multi_gpu_coil`, 
 If a multi-gpu setup is needed, check the adapted codes on the folders: `multi_gpu_coil`, `multi_gpu_hash`
 The `config.yaml` file can be found in all the folders, modified accordingly.
 
-Additional experiments inspired by the ideas and code proposed in the paper [DDMI](https://arxiv.org/html/2401.12517#:~:text=To%20address%20this%20limitation%2C%20we%20propose%20D%20omain-agnostic,adaptive%20positional%20embeddings%20instead%20of%20neural%20networks%E2%80%99%20weights) can be found in the folders: `original_vae` and `multi_vol_vae`
+Additional experiments inspired by the ideas and code proposed in the paper [DDMI](https://arxiv.org/html/2401.12517#:~:text=To%20address%20this%20limitation%2C%20we%20propose%20D%20omain-agnostic,adaptive%20positional%20embeddings%20instead%20of%20neural%20networks%E2%80%99%20weights) can be found in the `multi_vol_vae` folder
 
  
 To setup the environment use the `mri_env.yaml` file containing the relevant packages to be installed 🚀
