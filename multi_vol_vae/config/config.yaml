@@ -1,0 +1,100 @@
+seed: 7
+
+runtype: train
+# runtype: test
+results_folder: /scratch_net/ken/mcrespo/proj_marina/logs_new/output_vae_hdr/results
+
+path_to_outputs: /scratch_net/ken/mcrespo/proj_marina/logs_new/train_vae
+model_checkpoint: /scratch_net/ken/mcrespo/proj_marina/logs_new/train_vae/2025-03-11_18h31m39s/checkpoints/epoch_1499.pt
+
+dataset:
+  path_to_data: /itet-stor/mcrespo/bmicdatasets-originals/Originals/fastMRI/brain/multicoil_train/
+  with_center: True
+  n_volumes: 20
+  n_slices: 1
+  acceleration: 4
+  center_frac: 0.15
+
+
+dataloader:
+  batch_size: 4
+  pin_memory: False
+
+
+optimizer:
+  id: AdamW
+  params:
+    lr: 1.e-4 # The dot is necessary, otherwise the parser will mistake this for a string (and not a float).
+
+scheduler:
+  id: StepLR
+  params:
+    gamma: 1.0
+    step_size: 20_000
+
+# Training Process
+n_epochs: 1500
+log_interval: 50
+checkpoint_interval: 1500  # Keep in mind that each checkpoint takes ~241 MB of space.
+
+lossconfig:
+  multiscale: False #True
+  adversarial: False
+  disc_weight: -1
+  epochs: 100 #200
+  warmup_epochs: 5
+  kl_anneal: True
+  kl_max_coeff: 1.e-8 #0.5
+  kl_const_coeff: 0.0001
+  kl_const_portion: 0.0001
+  kl_anneal_portion: 0.9
+  sn_reg: True
+  sn_reg_weight_decay: 1e-1
+  sn_reg_weight_decay_anneal: True
+  sn_reg_weight_decay_init: 5
+  lr_scheduler: True
+  save_and_sample_every: 10
+  gradient_accumulate_every: 5
+    
+
+ddconfig:
+  double_z: True
+  z_channels: 128 #256 # THIS IS THE CHANNEL OF Z AFTER ENCODER (ch_mult_last * ch) *2 if double_z true
+  in_channels: 2 #3 rgb
+  out_ch: 64 # THE BASIS FCN CHANNEL [bsz, 'X', width, height]
+  n_groups: 8 # Norm factor, it should be smaller and divisor of the out_ch
+  ## Encoder/ Decoder architecture
+  ch: 16 #64 # The channels of encoder are formed based on this ch and it's multiples
+# ie. ch*1 ch*2 ch*4
+  ch_mult:
+  - 1 # 
+  - 2 # 
+  - 4 # 
+  num_res_blocks: 1 # 2
+  attn_resolutions: [] # No attention masks
+
+  resolution: 320 # 128 # Starting resolution 
+  hdbf_resolutions: [320, 160] # These are the resolutions of the different maps
+  # For that hdbf resolutions structure: we have 3 hdbf maps, bc the last one is after tanh activation function
+  
+  # Across the architecture
+  dropout: 0.0
+  attn_type: vanilla
+
+mlpconfig:
+  in_ch: 2 # x, y
+  out_ch: 2 #3 RGB
+  ch: 256
+  latent_dim: 64
+
+
+# ###################################################
+# # INFORMATION ONLY - NO EFFECT ON RUN
+# ###################################################
+# # The following section is for documentation purposes only.
+# # It does not affect the actual behavior of the run.
+# # These values are used solely for Tensorboard output, to help identify run types.
+hparam_info:
+  # embedding_vol: 1024
+  # embedding_coil: 512
+  dropout: False
