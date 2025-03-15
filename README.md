@@ -4,11 +4,13 @@ This code forms part of my research project on Neural Implicit Fields for MRI re
 As part of the experiments performed:
 
 - Single Volume training
+  
 Folders relevant 🖇️: single_vol, single_vol_hash
 **single_vol** contains the implementation of the PISCO regularization method 
 **single_vol_hash** contains the implementation of the hash encodings  
 
 - Multi Volume training
+  
 Folders relevant 🖇️: multi_vol_hash, multi_vol_coil, multi_gpu_coil, multi_gpu_hash
 **multi_vol_coil** contains the necessary functions to run the multi-volume experiments optimizing the volume and coil embeddings
 **multi_vol_hash** contains the necessary functions to run the multi-volume experiments with the coordinate hash encodings implementation
