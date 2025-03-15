@@ -7,7 +7,7 @@ As part of the experiments performed:
 
 - **Single Volume training**
 
-<img src="https://github.com/user-attachments/assets/2bf14141-1571-4529-9f7b-3e86687c3bc7" alt="My Image" width="500" height="280">
+<img src="imgs/single_vol_model.png" alt="My Image" width="500" height="280">
 
   
 Folders relevant 🖇️: `single_vol`, `single_vol_hash`
@@ -18,7 +18,7 @@ Folders relevant 🖇️: `single_vol`, `single_vol_hash`
 
 - **Multi Volume training**
 
-<img src="https://github.com/user-attachments/assets/973beece-8e0a-4c5f-b297-ab68383245a9" alt="My Image" width="500" height="300">
+<img src="imgs/multivol_model.png" alt="My Image" width="500" height="300">
 
   
 Folders relevant 🖇️: `multi_vol_hash`, `multi_vol_coil`, `multi_gpu_coil`, `multi_gpu_hash`
